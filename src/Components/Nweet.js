@@ -33,17 +33,21 @@ const Nweet = ({ nweetObj, isOwner }) => {
     <div>
       {editing ? (
         <>
-          <form onSubmit={onSubmit}>
-            <input
-              type="text"
-              placeholder="Edit your Nweet"
-              value={newNweet}
-              required
-              onChange={onChange}
-            />
-            <input type="submit" value="Update Nweet" />
-          </form>
-          <button onClick={toggleEditing}>Cancel</button>
+          {isOwner && ( //설령 주인이 아닌 누군가가 어떤 이유로 Edit nweet을 클릭하더라고 막아주는 보안처리
+            <>
+              <form onSubmit={onSubmit}>
+                <input
+                  type="text"
+                  placeholder="Edit your Nweet"
+                  value={newNweet}
+                  required
+                  onChange={onChange}
+                />
+                <input type="submit" value="Update Nweet" />
+              </form>
+              <button onClick={toggleEditing}>Cancel</button>
+            </>
+          )}
         </>
       ) : (
         <>
