@@ -16,6 +16,7 @@ const Home = ({ userObj }) => {
       setNweets(nweetArray);
     });
   }, []);
+
   const onSubmit = async (e) => {
     e.preventDefault();
     await dbService.collection("nweets").add({
