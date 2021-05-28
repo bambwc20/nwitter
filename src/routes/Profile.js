@@ -1,12 +1,12 @@
 import { authService } from "fbase";
 import React from "react";
-// import { useHistory } from "react-router";
+import { useHistory } from "react-router";
 
 const Profile = () => {
-  //   const history = useHistory(); Hooks으로도 가능.
+  const history = useHistory(); //Hooks으로도 가능.
   const onLogOutClick = () => {
     authService.signOut();
-    // history.push("/");
+    history.push("/");
   };
 
   return (
