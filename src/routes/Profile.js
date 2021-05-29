@@ -2,7 +2,7 @@ import { authService, dbService } from "fbase";
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router";
 
-const Profile = ({ userObj }) => {
+const Profile = ({ refreshUser, userObj }) => {
   const history = useHistory(); //Hooks으로도 가능.
   const [newDisplayName, setNewDisplayName] = useState(userObj.displayName);
 
@@ -40,6 +40,8 @@ const Profile = ({ userObj }) => {
       await userObj.updateProfile({
         displayName: newDisplayName,
       });
+      refreshUser(); //이벤트를 넘겨 받음
+      //firebase에 있는 profile을 업데이트 시켜준 후에 react.js에 있는 profile를 새로고침 해줄거야!
     }
   };
 
