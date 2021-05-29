@@ -8,13 +8,19 @@ const Home = ({ userObj }) => {
 
   useEffect(() => {
     setNweets([]);
-    dbService.collection("nweets").onSnapshot((snapshot) => {
-      //onSnapshot은 DB가 변경될때마다 호출
-      const nweetArray = snapshot.docs.map((doc) => {
-        return { id: doc.id, ...doc.data() }; //data()는 기존의 모든 데이터를 포함한다.
+    dbService
+      .collection("nweets")
+      .where("creatorId", "==", userObj.uid)
+      .orderBy("createdAt")
+      .onSnapshot((snapshot) => {
+        //onSnapshot은 DB가 변경될때마다 호출
+        const nweetArray = snapshot.docs.reverse().map((doc) => {
+          //먼저쓴가 가장 위로 코드
+          return { id: doc.id, ...doc.data() }; //data()는 기존의 모든 데이터를 포함한다.
+        });
+
+        setNweets(nweetArray);
       });
-      setNweets(nweetArray);
-    });
   }, []);
 
   return (
