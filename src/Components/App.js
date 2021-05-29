@@ -28,7 +28,6 @@ function App() {
         //Userobj는 다른 곳에서도 사용 될 수 있으므로 애플리케이션의 최상에 위치해야 한다.
         "Initializing..."
       )}
-      <footer>&copy; {new Date().getFullYear} Nwitter</footer>
     </>
   );
 }
