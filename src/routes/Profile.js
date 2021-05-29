@@ -11,20 +11,20 @@ const Profile = ({ refreshUser, userObj }) => {
     history.push("/");
   };
 
-  const getMyNweets = async () => {
-    //내가 쓴 글 보는 코드
-    const nweets = await dbService
-      .collection("nweets")
-      .where("creatorId", "==", userObj.uid)
-      .orderBy("createdAt")
-      .get();
-    //where를 또 할 수 있지만 지금은 그냥 get으로 가져오면 됨.
-    // console.log(
-    //   nweets.docs.map((doc) => {
-    //     return doc.data();
-    //   })
-    // );
-  };
+  // const getMyNweets = async () => {
+  //   //내가 쓴 글 보는 코드
+  //   const nweets = await dbService
+  //     .collection("nweets")
+  //     .where("creatorId", "==", userObj.uid)
+  //     .orderBy("createdAt")
+  //     .get();
+  //   //where를 또 할 수 있지만 지금은 그냥 get으로 가져오면 됨.
+  //   // console.log(
+  //   //   nweets.docs.map((doc) => {
+  //   //     return doc.data();
+  //   //   })
+  //   // );
+  // };
 
   const onChange = (e) => {
     const {
